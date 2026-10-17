@@ -2349,25 +2349,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let game_started = false
 
-        let parentAwayVis = 'is-invisible'
         let awayteam = cache_data.dates[0].games[j].teams['away'].team.clubName
         let awayteam_abbr = cache_data.dates[0].games[j].teams['away'].team.abbreviation
         let awayparent = ''
         if ( cache_data.dates[0].games[j].teams['away'].team.sport.name != 'Major League Baseball' ) {
           awayteam = cache_data.dates[0].games[j].teams['away'].team.shortName
           awayparent = cache_data.dates[0].games[j].teams['away'].team.parentOrgName || ''
-          if (awayparent != 'Office of the Commissioner') parentAwayVis = '';
+          if (awayparent == 'Office of the Commissioner') awayparent = '';
           awayteam_abbr = cache_data.dates[0].games[j].teams['away'].team.abbreviation
           awayteam_level = session.getLevelNameFromSportId(cache_data.dates[0].games[j].teams['away'].team.sport.id)
         }
-        let parentHomeVis = 'is-invisible'
         let hometeam = cache_data.dates[0].games[j].teams['home'].team.clubName
         let hometeam_abbr = cache_data.dates[0].games[j].teams['home'].team.abbreviation
         let homeparent = ''
         if ( cache_data.dates[0].games[j].teams['home'].team.sport.name != 'Major League Baseball' ) {
           hometeam = cache_data.dates[0].games[j].teams['home'].team.shortName
           homeparent = cache_data.dates[0].games[j].teams['home'].team.parentOrgName || ''
-          if (homeparent != 'Office of the Commissioner') parentHomeVis = '';
+          if (homeparent == 'Office of the Commissioner') homeparent = '';
           hometeam_abbr = cache_data.dates[0].games[j].teams['home'].team.abbreviation
           hometeam_level = session.getLevelNameFromSportId(cache_data.dates[0].games[j].teams['home'].team.sport.id)
         }
@@ -2990,7 +2988,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             
               </div>
-              <div class="parentOrg ${parentAwayVis}">${awayparent}</div>
+              <div class="parentOrg">${awayparent}</div>
 
               <div class="row ${gameLevel}">
                 <div class="team">
@@ -3003,7 +3001,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <span class="">${homescore}</span>
                 </div>
               </div>
-              <div class="parentOrg ${parentHomeVis}">${homeparent}</div>
+              <div class="parentOrg">${homeparent}</div>
      
             
 
